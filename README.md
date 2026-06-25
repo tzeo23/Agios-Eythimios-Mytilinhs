@@ -1041,26 +1041,32 @@
 </div>
 
 <!-- GALLERY -->
-<div class="cave-gallery"  id="gallery">
+div class="cave-gallery"  id="gallery">
 
 
   <div class="cave-photo">
-    <img src="image/imagee.jpg" alt="Εκκλησάκι">
+    <img src="assets/images/imagee.jpg" alt="Εκκλησάκι">
     <div class="cave-caption">Εκκλησάκι εντός της σπηλιάς</div>
   </div>
 
   <div class="cave-photo">
-    <img src="image/imageee.jpg" alt="Θέρμη">
+    <img src="assets/images/imageee.jpg" alt="Θέρμη">
     <div class="cave-caption">Κεράκι</div>
   </div>
 
   <div class="cave-photo">
-    <img src="image/image (1).jpg" alt="Τοπίο">
+    <img src="assets/images/image (1).jpg" alt="Τοπίο">
     <div class="cave-caption">Σπηλιά</div>
   </div>
 <div class="cave-photo">
-    <img src="image/image (3).jpg" alt="Τοπίο">
+    <img src="assets/images/image (3).jpg" alt="Τοπίο">
     <div class="cave-caption">Εσωτερικός χώρος</div>
+  </div>
+</div>
+    <p style="text-align:center;margin-top:1.5rem;font-family:'Crimson Text',serif;font-style:italic;font-size:15px;color:rgb(255, 94, 0);">
+      Προσθήκη φωτογραφιών στο
+      <a href=https://maps.app.goo.gl/w1Un8NsPBg5x1Hzh8" style="color:blue;(200,168,75,0.65);text-decoration:underline;">Google Maps</a>
+    </p> <br>
   </div>
 </div>
     <p style="text-align:center;margin-top:1.5rem;font-family:'Crimson Text',serif;font-style:italic;font-size:15px;color:rgb(255, 94, 0);">
