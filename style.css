@@ -1,0 +1,707 @@
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --gold: #c8a84b;
+    --gold-light: #e8d49a;
+    --gold-dark: #8a6f28;
+    --night: #060c18;
+    --night-mid: #0d1628;
+    --parchment: #f5f0e8;
+    --parchment-dark: #e8e0ce;
+    --ink: #1a1510;
+    --ink-mid: #3d3428;
+    --ink-light: #7a6e5c;
+    --white: #fefcf8;
+    --accent: #c8a84b;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Crimson Text', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.7;
+    overflow-x: hidden;
+    
+  }
+
+  /* ── NAVIGATION ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    background: rgba(6,12,24,0.96);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.7rem 2rem;
+    border-bottom: 1px solid rgba(200,168,75,0.25);
+  }
+  .nav-brand {
+    font-family: 'IM Fell English', serif;
+    font-size: 16px;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+  .nav-links a {
+    color: rgba(255,255,255,0.65);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-decoration: none;
+    letter-spacing: 0.07em;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 75vh;
+    background: radial-gradient(ellipse at 30% 30%, #0a1628 0%, #050d1a 55%, #020508 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+
+  }
+
+  #starCanvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+.hero::after {
+  height: 70px; /* ΜΙΣΟ μέγεθος */
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgba(200,168,75,0.05) 0%,
+    transparent 75%
+  );
+
+
+}Σ
+  .hero > *:not(#starCanvas) { position: relative; z-index: 2; }
+
+  
+  .hero-arc {
+  width: 380px;
+  height: 50px;
+  border: 1px solid rgba(200,168,75,0.06);
+}
+
+.hero-arc:nth-child(3) {
+  width: 260px;
+  height: 130px;
+}
+
+.hero-arc:nth-child(4) {
+  width: 170px;
+  height: 85px;
+}
+
+  /* Cross centred, large, floating */
+  .cross-wrapper {
+    margin-bottom: 2.5rem;
+    animation: floatCross 5s ease-in-out infinite;
+  }
+  @keyframes floatCross {
+    0%,100% { transform: translateY(0);   filter: drop-shadow(0 0 30px rgba(200,168,75,0.50)); }
+    50%      { transform: translateY(-12px); filter: drop-shadow(0 0 55px rgba(200,168,75,0.90)); }
+  }
+
+  .hero-eyebrow {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.26em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1rem;
+    opacity: 0.8;
+  }
+
+  .hero h1 {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(40px, 7vw, 70px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 2px 40px rgba(0,0,0,0.6);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-subtitle {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 21px;
+    color: var(--gold-light);
+    margin-bottom: 2rem;
+    opacity: 0.85;
+  }
+
+  .hero-divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 1.25rem auto;
+    width: 280px;
+    justify-content: center;
+  }
+  .hero-divider span {
+    display: block; height: 1px; flex: 1;
+    background: linear-gradient(90deg, transparent, rgba(200,168,75,0.45), transparent);
+  }
+  .hero-divider-icon { color: var(--gold); font-size: 16px; }
+
+
+  
+  .stars-row { color: var(--gold); font-size: 22px; letter-spacing: 4px; margin-bottom: 0.35rem; }
+  .rating-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    letter-spacing: 0.1em;
+  }
+
+  .hero-scroll {
+    position: absolute;
+    bottom: 2rem; left: 50%;
+    transform: translateX(-50%);
+    color: rgba(200,168,75,0.45);
+    font-size: 11px;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    animation: pulseDown 2.2s ease-in-out infinite;
+  }
+  @keyframes pulseDown {
+    0%,100% { opacity: 0.45; transform: translateX(-50%) translateY(0); }
+    50%      { opacity: 1;    transform: translateX(-50%) translateY(7px); }
+  }
+
+  /* ── SHARED SECTION STYLES ── */
+  section {
+    padding: 5rem 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .section-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--gold-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-family: 'IM Fell English', serif;
+    font-size: clamp(28px, 4vw, 40px);
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+  }
+
+  .section-body {
+    font-size: 19px;
+    color: var(--ink-mid);
+    line-height: 1.85;
+    max-width: 680px;
+  }
+  .section-body strong { color: var(--ink); font-weight: 600; }
+
+  /* ── INFO CARDS ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 1px;
+    background: var(--parchment-dark);
+    border: 1px solid var(--parchment-dark);
+    border-radius: 12px;
+    overflow: hidden;
+    margin: 3rem 0;
+  }
+  .info-card {
+    background: var(--white);
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .info-card-icon {
+    width: 44px; height: 44px;
+    margin: 0 auto 0.75rem;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .info-card-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 4px;
+  }
+  .info-card-val {
+    font-family: 'Crimson Text', serif;
+    font-size: 17px;
+    color: var(--ink-mid);
+    font-weight: 600;
+  }
+
+  /* ── GALLERY ── */
+  .gallery-section {
+    background: var(--night-mid);
+    padding: 5rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .gallery-section::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(200,168,75,0.05) 1px, transparent 1px);
+    background-size: 24px 24px;
+    pointer-events: none;
+  }
+  .gallery-inner { max-width: 900px; margin: 0 auto; }
+  .gallery-title {
+    font-family: 'IM Fell English', serif;
+    font-size: 36px;
+    color: var(--white);
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+  .gallery-sub {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 17px;
+    color: rgba(200,168,75,0.65);
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    grid-template-rows: 220px 220px;
+    gap: 8px;
+  }
+  .photo-cell {
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    background: #080e1c;
+    cursor: pointer;
+  }
+  .photo-cell:first-child { grid-row: 1 / 3; }
+  .photo-img {
+   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  position: absolute;
+  inset: 0;
+  }
+  .photo-img.loaded { opacity: 1; }
+  .photo-cell:hover .photo-img { transform: scale(1.05); }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;
+    background: linear-gradient(135deg, #111828 0%, #070e1c 100%);
+    color: rgba(200,168,75,0.35);
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    position: absolute; inset: 0;
+  }
+  .photo-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(6,12,24,0.75) 0%, transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s;
+    display: flex; align-items: flex-end; padding: 1rem;
+  }
+  .photo-cell:hover .photo-overlay { opacity: 1; }
+  .photo-caption {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: rgba(255,255,255,0.9);
+  }
+  .photo-cell::after {
+    content: '';
+    position: absolute; inset: 0;
+    border: 1px solid rgba(200,168,75,0.18);
+    border-radius: 8px;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+
+  /* ── CHRISTIAN SYMBOLS ── */
+  .icons-section {
+    background: var(--white);
+    padding: 4rem 2rem;
+    border-top: 1px solid var(--parchment-dark);
+    border-bottom: 1px solid var(--parchment-dark);
+  }
+  .icons-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 2rem;
+    text-align: center;
+  }
+  .icon-item { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .icon-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .icon-circle::after {
+    content: '';
+    position: absolute; inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(200,168,75,0.30);
+  }
+  .icon-label {
+    font-family: 'IM Fell English', serif;
+    font-size: 15px;
+    color: var(--ink);
+  }
+  .icon-desc {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--ink-light);
+    margin-top: -0.5rem;
+  }
+
+  /* ── REVIEWS ── */
+  .reviews-section { background: var(--parchment-dark); }
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+  }
+  .review-card {
+    background: var(--white);
+    border: 1px solid var(--parchment-dark);
+    border-radius: 12px;
+    padding: 1.5rem;
+    position: relative;
+  }
+  .review-card::before {
+    content: '"';
+    position: absolute;
+    top: -12px; left: 1.25rem;
+    font-family: 'IM Fell English', serif;
+    font-size: 60px;
+    color: var(--gold);
+    line-height: 1;
+    opacity: 0.35;
+  }
+  .review-stars { color: var(--gold); font-size: 16px; letter-spacing: 2px; margin-bottom: 0.75rem; }
+  .review-text {
+    font-family: 'Crimson Text', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-mid);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+  .reviewer {
+    display: flex; align-items: center; gap: 10px;
+    border-top: 1px solid var(--parchment-dark);
+    padding-top: 0.75rem;
+  }
+  .reviewer-avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--night-mid);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px; font-weight: 500;
+    flex-shrink: 0;
+  }
+  .reviewer-name { font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); }
+  .reviewer-meta { font-family: 'Inter', sans-serif; font-size: 11px; color: var(--ink-light); }
+
+  /* ── LOCATION ── */
+  .location-section { background: var(--parchment); }
+  .location-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: start;
+    margin-top: 2rem;
+  }
+  .location-details p {
+    font-size: 18px;
+    color: var(--ink-mid);
+    margin-bottom: 1rem;
+    display: flex; gap: 10px; align-items: flex-start;
+  }
+  .map-frame {
+    border-radius: 12px;
+    border: 1px solid var(--parchment-dark);
+    height: 260px;
+    background: var(--parchment-dark);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 12px; text-align: center; padding: 1rem;
+  }
+  .map-frame p { font-family: 'Inter', sans-serif; font-size: 12px; color: var(--ink-light); }
+  .map-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--night-mid);
+    color: var(--gold);
+    font-family: 'Inter', sans-serif;
+    font-size: 13px; font-weight: 500;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    letter-spacing: 0.05em;
+    transition: background 0.2s;
+    border: 1px solid rgba(200,168,75,0.3);
+    margin-top: 8px;
+  }
+  .map-btn:hover { background: #131f38; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--night);
+    padding: 4rem 2rem 2rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  footer::before {
+    content: '';
+    position: absolute; inset: 0;
+    background-image: radial-gradient(circle, rgba(200,168,75,0.04) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+  .footer-cross { margin-bottom: 1.5rem; position: relative; z-index: 1; }
+  .footer-name {
+    font-family: 'IM Fell English', serif;
+    font-size: 28px; color: var(--white);
+    margin-bottom: 0.25rem;
+    position: relative; z-index: 1;
+  }
+  .footer-loc {
+    font-family: 'Crimson Text', serif;
+    font-style: italic; font-size: 16px;
+    color: var(--gold); opacity: 0.65;
+    margin-bottom: 2rem;
+    position: relative; z-index: 1;
+  }
+  .footer-line {
+    width: 100px; height: 1px;
+    background: rgba(200,168,75,0.22);
+    margin: 1.5rem auto;
+    position: relative; z-index: 1;
+  }
+  .footer-note {
+    font-family: 'Inter', sans-serif;
+    font-size: 11px;
+    color: rgba(255,255,255,0.22);
+    letter-spacing: 0.08em;
+    position: relative; z-index: 1;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    nav { padding: 0.6rem 1rem; }
+    .nav-links { display: none; }
+    .photo-grid {
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 160px 160px 160px;
+    }
+    .photo-cell:first-child { grid-column: 1 / 3; grid-row: 1; }
+    .location-grid { grid-template-columns: 1fr; }
+    section { padding: 3rem 1.25rem; }
+    .gallery-section, .icons-section { padding: 3rem 1.25rem; }
+  }
+
+  /* ── FADE-IN ── */
+  .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  /* ── SLIDESHOW ── */
+  .text-slider {
+    display: flex;
+    gap: 25px;
+    align-items: center;
+    margin-top: 40px;
+  }
+/* ── CANDLE FLAMES OVERLAY ── */
+.candle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* κάθε φλόγα */
+.flame {
+  position: absolute;
+  bottom: -10px;
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(circle at 50% 30%,
+    rgba(255, 230, 140, 0.95) 0%,
+    rgba(255, 160, 60, 0.75) 35%,
+    rgba(255, 90, 20, 0.35) 60%,
+    transparent 80%
+  );
+  border-radius: 50% 50% 50% 50%;
+  filter: blur(0.2px);
+  opacity: 0.85;
+  animation: flicker 1.6s infinite ease-in-out, rise 6s infinite linear;
+}
+
+/* τυχαίες θέσεις */
+.flame:nth-child(1) { left: 10%; animation-delay: 0s;   transform: scale(1.1); }
+.flame:nth-child(2) { left: 22%; animation-delay: .8s;  transform: scale(0.9); }
+.flame:nth-child(3) { left: 35%; animation-delay: 1.2s; transform: scale(1.2); }
+.flame:nth-child(4) { left: 55%; animation-delay: .4s;  transform: scale(0.8); }
+.flame:nth-child(5) { left: 72%; animation-delay: 1.6s; transform: scale(1.05); }
+.flame:nth-child(6) { left: 88%; animation-delay: .2s;  transform: scale(0.95); }
+
+/* τρεμόπαιγμα */
+@keyframes flicker {
+  0%, 100% { opacity: 0.65; transform: translateY(0) scale(1); }
+  50%      { opacity: 1;    transform: translateY(-2px) scale(1.08); }
+}
+
+/* ανοδική κίνηση (σαν θερμότητα) */
+@keyframes rise {
+  0%   { bottom: -10px; filter: blur(0.2px); }
+  100% { bottom: 110%; filter: blur(1px); }
+}
+
+/* ενίσχυση ατμόσφαιρας */
+#about {
+  overflow: hidden;
+}
+.cave-gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:24px;
+    padding:40px;
+}
+
+.cave-photo{
+    position:relative;
+    overflow:hidden;
+    border-radius:14px;
+
+    /* πέτρινο πλαίσιο */
+    border:3px solid rgba(36, 27, 2, 0.45);
+
+    background:
+      linear-gradient(
+        145deg,
+        #2f2419,
+        #1a1612
+      );
+
+    box-shadow:
+      0 0 20px rgba(0,0,0,.6),
+      0 0 15px rgba(200,168,75,.15);
+
+    transition:.5s;
+}
+
+.cave-photo:hover{
+    transform:translateY(-6px);
+    box-shadow:
+      0 10px 30px rgba(0,0,0,.8),
+      0 0 25px rgba(200,168,75,.35);
+}
+
+.cave-photo img{
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    display:block;
+    filter:
+      brightness(.88)
+      contrast(1.05)
+      saturate(.95);
+    transition:.6s;
+}
+
+.cave-photo:hover img{
+    transform:scale(1.08);
+}
+
+.cave-caption{
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+
+    padding:18px;
+
+    background:linear-gradient(
+      to top,
+      rgba(0,0,0,.95),
+      rgba(0,0,0,0)
+    );
+
+    color:#d7b56d;
+    font-family:'Crimson Text',serif;
+    font-size:18px;
+    letter-spacing:.04em;
+}
+.gold-dust{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    overflow:hidden;
+}
+
+.gold-dust span{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:#d4af37;
+    opacity:.4;
+    animation:floatDust 12s linear infinite;
+}
+
+@keyframes floatDust{
+    from{
+        transform:translateY(100vh);
+    }
+    to{
+        transform:translateY(-100px);
+    }
+}
